@@ -45,12 +45,12 @@ class Calculator extends Component {
 				api.calculate(this.state.firstNum,parseInt(this.state.textValue,10),this.state.operator).then((res) => {
 					if(res.statusCode === 200) {
 		                this.setState({
-	   						...this.state,
-							firstNum: res.data,
-							textValue: res.data.toString(),
-							operator: buttonValue,
-							reset: true
-						})
+				   			firstNum: null,
+				    		secondNum: null,
+				    		operator: null,
+				    		textValue: res.data.toString(),
+				    		reset: true
+			    		});
 	            	}
 	            });
 			}
@@ -77,6 +77,7 @@ class Calculator extends Component {
           		<div className="col-xs-12 col-sm-offset-4 col-sm-4 panel panel-default calculator-container">
 		      		<div className="row panel-body">
 		      			<div className="col-xs-12 calc-data">
+		      				<span>{this.state.operator}</span>
 		    				<input type="text" className="form-control" id="data-input" value={this.state.textValue} disabled/>
 			            </div>
 			            <div className="col-xs-12 calc-buttons">
